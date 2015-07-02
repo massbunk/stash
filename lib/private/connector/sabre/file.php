@@ -143,6 +143,7 @@ class OC_Connector_Sabre_File extends OC_Connector_Sabre_Node implements \Sabre\
 					}
 				}
 				catch (\OCP\Files\NotPermittedException $e) {
+					$this->fileView->unlink($partFilePath);
 					// a more general case - due to whatever reason the content could not be written
 					throw new \Sabre\DAV\Exception\Forbidden($e->getMessage(), $e->getCode(), $e);
 				}
